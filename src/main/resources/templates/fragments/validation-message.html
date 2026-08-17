@@ -1,0 +1,12 @@
+<div th:fragment="validationMessage(field)">
+
+    <div th:each="error : ${error}"
+         th:if="${error.field == field}">
+
+        <p th:text="${error.defaultMessage}"
+           class="mt-1 text-sm text-red-600">
+        </p>
+
+    </div>
+
+</div>

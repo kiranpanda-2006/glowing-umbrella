@@ -1931,6 +1931,9 @@
   .text-green-600 {
     color: var(--color-green-600);
   }
+  .text-red-600 {
+    color: var(--color-red-600);
+  }
   .text-white {
     color: var(--color-white);
   }
