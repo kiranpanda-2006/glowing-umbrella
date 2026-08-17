@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}">
+
+<head>
+    <title>Login: JobPortal</title>
+</head>
+
+<body>
+
+<main layout:fragment="content">
+
+    <div class="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-6">
+
+        <div class="w-full max-w-sm">
+
+            <!-- Header -->
+            <div class="text-center mb-4">
+
+                <h1 class="text-xl font-bold text-gray-900">
+                    Welcome Back
+                </h1>
+
+                <p class="text-xs text-gray-500 mt-1">
+                    Login to your JobPortal account
+                </p>
+
+            </div>
+
+
+            <!-- Form Card -->
+            <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4">
+
+                <form
+                        th:action="@{/auth/login}"
+                        th:object="${login}"
+                        method="post"
+                        class="space-y-3">
+
+                    <!-- Email / Mobile Number -->
+                    <div>
+
+                        <label class="block mb-1 text-xs font-medium text-gray-700">
+                            Email or Mobile Number
+                        </label>
+
+                        <input type="text"
+                               name="login"
+                               class="w-full h-9 px-2.5 text-xs bg-gray-50
+                                      border border-gray-300 text-gray-900
+                                      rounded-md focus:ring-2
+                                      focus:ring-blue-500 focus:border-blue-500"
+                               placeholder="Enter email or mobile number">
+
+                    </div>
+
+
+                    <!-- Password -->
+                    <div>
+
+                        <label class="block mb-1 text-xs font-medium text-gray-700">
+                            Password
+                        </label>
+
+                        <input type="password"
+                               name="password"
+                               class="w-full h-9 px-2.5 text-xs bg-gray-50
+                                      border border-gray-300 text-gray-900
+                                      rounded-md focus:ring-2
+                                      focus:ring-blue-500 focus:border-blue-500"
+                               placeholder="••••••••">
+
+                    </div>
+
+
+                    <!-- Login Button -->
+                    <div class="flex justify-center pt-1">
+
+                        <button type="submit"
+                                class="w-28 h-9 bg-blue-600 hover:bg-blue-700
+                                       !text-white rounded-md
+                                       text-sm font-semibold shadow-sm
+                                       transition duration-200">
+
+                            Login
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- Register -->
+            <p class="mt-3 text-center text-[11px] text-gray-500">
+
+                Don't have an account?
+
+                <a href="/auth/"
+                   class="font-medium text-blue-600 hover:underline">
+
+                    Create Account
+
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+</html>
