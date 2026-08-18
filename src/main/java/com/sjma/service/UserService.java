@@ -9,8 +9,10 @@ public interface UserService {
 	
 	void save(RegisterRequestDto usrequestDtoer);
 	
-	Optional<User> findBYId(long id);
+	User findBYId(long id);
 	
-	Optional<User> findByEmail(String email);
+	User findByEmail(String email);
+	
+	User findByEmailOrPhoneNumber(String email,String phoneNumber);
 
 }

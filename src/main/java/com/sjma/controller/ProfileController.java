@@ -12,4 +12,14 @@ public class ProfileController {
     private String profilePage(){
         return "candidates/profile";
     }
+    
+    @GetMapping("/education")
+    private String educationPage() {
+    	return "candidates/education";
+    }
+    
+    @GetMapping("/skills")
+    private String skillsPage() {
+    	return "candidates/skills";
+    }
 }

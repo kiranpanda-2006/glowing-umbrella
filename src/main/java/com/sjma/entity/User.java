@@ -37,6 +37,7 @@ public class User {
 
 	@NotBlank(message = "phoneNumber field cant be blank")
 	@Pattern(regexp = "^[6-9][0-9]{9}$", message = "Invalid PhoneNumber")
+	@Column(unique = true)
 	private String mobileNumber;
 
 	@NotBlank(message = "password can't be blank.")

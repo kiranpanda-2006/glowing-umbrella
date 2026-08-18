@@ -154,38 +154,37 @@
                                       border border-gray-300 text-gray-900
                                       rounded-md focus:ring-2
                                       focus:ring-blue-500 focus:border-blue-500">
-									  
-									  <!--password error message-->
-									  
-									  <p th:if="${passwordError != null}"
-									     th:text="${passwordError}"
-									     class="mt-1 text-xs text-red-600">
-									  </p>
 
-										
+												<!--password error message-->
+
+												<div th:if="${passwordError}" class="text-red-600">
+												    <p th:text="${passwordError}"></p>
+												</div>
 
 
-											<!-- Terms -->
-											<div class="flex items-center pt-1">
 
-												<input id="terms" th:field="*{terms}" type="checkbox" class="w-3.5 h-3.5 rounded border-gray-300
+
+												<!-- Terms -->
+												<div class="flex items-center pt-1">
+
+													<input id="terms" th:field="*{terms}" type="checkbox" class="w-3.5 h-3.5 rounded border-gray-300
                                       text-blue-600 focus:ring-blue-500">
 
 
-												<label for="terms" class="ms-2 text-[11px] text-gray-500">
+													<label for="terms" class="ms-2 text-[11px] text-gray-500">
 
-													I agree to the
-													<a href="#" class="text-blue-600 hover:underline">
-														Terms & Conditions
-													</a>
+														I agree to the
+														<a href="#" class="text-blue-600 hover:underline">
+															Terms & Conditions
+														</a>
 
-												</label>
+													</label>
 
-											</div>
-											<!-- Validation Error -->
-											<div
-												th:replace="~{fragments/validation-message :: validationMessage('terms')}">
-											</div>
+												</div>
+												<!-- Validation Error -->
+												<div
+													th:replace="~{fragments/validation-message :: validationMessage('terms')}">
+												</div>
 
 
 												<!-- Submit -->

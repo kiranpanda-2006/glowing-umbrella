@@ -15,8 +15,7 @@ public class RegisterRequestDto {
 
 	@NotBlank(message = "email-filed cannot be null")
 	@Size(min = 5, max = 50, message = "set your Correct name")
-	@Column(unique = true,
-	comment = "User With EmailAlready exist")
+	@Column(unique = true)
 	private String userName;
 
 	@Email(regexp = "^[a-zA-Z0-9._%+-]+@gmail\\.com$", message = "Enter Proper email format.")

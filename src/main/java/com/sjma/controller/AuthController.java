@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sjma.dto.LoginRequestDto;
 import com.sjma.dto.RegisterRequestDto;
+import com.sjma.entity.User;
 import com.sjma.exception.PasswordNotMatchException;
 import com.sjma.service.UserService;
 
@@ -46,27 +47,16 @@ public class AuthController {
 			
 			return "layout/auth/register";
 		}
+    	    	
+			try {
+				userService.save(register);
+			} catch (PasswordNotMatchException e) {
+				model.addAttribute("passwordError",e.getMessage());
+				e.getMessage();
+				return "layout/auth/register";
+			}
     	
-    	String password 
-    	= register.getPassword();
-    	String confiirmPassword
-    	= register.getConfirmPassword();
-    	
-    	if (! password.equals(confiirmPassword)) {
-    		
-			throw new PasswordNotMatchException("password and confirmPassword is not matched.");
-		}
-    	
-    	try {
-			userService.save(register);
-		} catch (PasswordNotMatchException e) {
-			
-			model.addAttribute("passwordError",e.getMessage());
-			
-			return "layout/auth/register";
-		}
-    	
-        return "layout/auth/login";
+        return "redirect:/auth/login";
     }
 
 	/*
@@ -81,12 +71,7 @@ public class AuthController {
 	}
 
 	@PostMapping("/login")
-	public String loginUser(@ModelAttribute("login") LoginRequestDto login) {
-		String credential = login.getLogin();
-		String password = login.getPassword();
-
-		System.out.println(credential);
-		System.out.println(password);
+	public String loginUser(@ModelAttribute("login") LoginRequestDto loginRequest) {
 		return "layout/auth/login-success";
 	}
 

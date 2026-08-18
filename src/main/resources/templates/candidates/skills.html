@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}">
+
+<head>
+    <title>Skills</title>
+</head>
+
+<body>
+
+<main layout:fragment="content">
+
+    <div class="max-w-5xl mx-auto px-6 py-10">
+
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">
+                Skills
+            </h1>
+
+            <p class="mt-2 text-gray-500">
+                Add your technical and professional skills.
+            </p>
+        </div>
+
+
+        <!-- Skills Form -->
+        <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+
+            <h2 class="text-xl font-semibold text-gray-900 mb-6">
+                Add Your Skills
+            </h2>
+
+            <form id="skillsForm">
+
+                <!-- Technical Skills -->
+                <div class="mb-6">
+
+                    <label class="block mb-2 text-sm font-medium text-gray-900">
+                        Technical Skills *
+                    </label>
+
+                    <input type="text"
+                           id="technicalSkill"
+                           name="technicalSkill"
+                           placeholder="e.g. Java, Spring Boot, MySQL"
+                           class="w-full p-2.5 border border-gray-300 rounded-lg
+                                  focus:ring-blue-500 focus:border-blue-500">
+
+                    <p class="mt-1 text-sm text-gray-500">
+                        Add skills one by one.
+                    </p>
+
+                </div>
+
+
+                <!-- Programming Languages -->
+                <div class="mb-6">
+
+                    <label class="block mb-2 text-sm font-medium text-gray-900">
+                        Programming Languages
+                    </label>
+
+                    <input type="text"
+                           id="programmingLanguage"
+                           name="programmingLanguage"
+                           placeholder="e.g. Java, JavaScript, Python"
+                           class="w-full p-2.5 border border-gray-300 rounded-lg
+                                  focus:ring-blue-500 focus:border-blue-500">
+
+                </div>
+
+
+                <!-- Frameworks -->
+                <div class="mb-6">
+
+                    <label class="block mb-2 text-sm font-medium text-gray-900">
+                        Frameworks / Libraries
+                    </label>
+
+                    <input type="text"
+                           id="framework"
+                           name="framework"
+                           placeholder="e.g. Spring Boot, React, Angular"
+                           class="w-full p-2.5 border border-gray-300 rounded-lg
+                                  focus:ring-blue-500 focus:border-blue-500">
+
+                </div>
+
+
+                <!-- Databases -->
+                <div class="mb-6">
+
+                    <label class="block mb-2 text-sm font-medium text-gray-900">
+                        Databases
+                    </label>
+
+                    <input type="text"
+                           id="database"
+                           name="database"
+                           placeholder="e.g. MySQL, PostgreSQL, MongoDB"
+                           class="w-full p-2.5 border border-gray-300 rounded-lg
+                                  focus:ring-blue-500 focus:border-blue-500">
+
+                </div>
+
+
+                <!-- Tools -->
+                <div class="mb-6">
+
+                    <label class="block mb-2 text-sm font-medium text-gray-900">
+                        Tools & Technologies
+                    </label>
+
+                    <input type="text"
+                           id="tools"
+                           name="tools"
+                           placeholder="e.g. Git, Docker, Maven"
+                           class="w-full p-2.5 border border-gray-300 rounded-lg
+                                  focus:ring-blue-500 focus:border-blue-500">
+
+                </div>
+
+
+                <!-- Other Skills -->
+                <div>
+
+                    <label class="block mb-2 text-sm font-medium text-gray-900">
+                        Other Skills
+                    </label>
+
+                    <textarea id="otherSkills"
+                              name="otherSkills"
+                              rows="3"
+                              placeholder="Add any other skills..."
+                              class="w-full p-2.5 border border-gray-300 rounded-lg
+                                     focus:ring-blue-500 focus:border-blue-500"></textarea>
+
+                </div>
+
+
+                <!-- Buttons -->
+                <div class="flex justify-end gap-3 mt-8">
+
+                    <button type="button"
+                            id="clearSkillsBtn"
+                            class="px-5 py-2.5 text-sm font-medium
+                                   text-gray-900 bg-gray-100
+                                   hover:bg-gray-200 rounded-lg">
+                        Clear
+                    </button>
+
+                    <button type="button"
+                            id="saveSkillsBtn"
+                            class="px-5 py-2.5 text-sm font-medium
+                                   text-white bg-blue-600
+                                   hover:bg-blue-700 rounded-lg">
+                        Save Skills
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- Added Skills -->
+        <div class="mt-8 bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+
+            <div class="flex items-center justify-between mb-5">
+
+                <h2 class="text-xl font-semibold text-gray-900">
+                    Your Skills
+                </h2>
+
+                <span id="skillCount"
+                      class="text-sm text-gray-500">
+                    0 Skills
+                </span>
+
+            </div>
+
+
+            <!-- Skills will be added here -->
+            <div id="skillsContainer"
+                 class="flex flex-wrap gap-2">
+
+                <!-- Empty State -->
+                <p id="emptySkills"
+                   class="text-sm text-gray-500">
+                    No skills added yet.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Continue -->
+        <div class="flex justify-end mt-6">
+
+            <a th:href="@{/candidate/experience}"
+               class="px-6 py-2.5 text-sm font-medium text-white
+                      bg-blue-600 hover:bg-blue-700 rounded-lg">
+
+                Save & Continue
+
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- Skills JavaScript -->
+<script th:src="@{/js/skills.js}"></script>
+
+</body>
+</html>

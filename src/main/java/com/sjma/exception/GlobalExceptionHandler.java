@@ -23,7 +23,10 @@ public class GlobalExceptionHandler {
 		return fieldError;
 	}
 	
-	
+	@ExceptionHandler(exception = PasswordNotMatchException.class)
+	private String handlePasswordNotMatchException(PasswordNotMatchException e) {
+		return e.getMessage();
+	}
 	
 	
 

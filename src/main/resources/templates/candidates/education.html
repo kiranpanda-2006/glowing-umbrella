@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}">
+
+<head>
+    <title>Education</title>
+</head>
+
+<body>
+
+<main layout:fragment="content">
+
+    <div class="max-w-5xl mx-auto px-6 py-10">
+
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">
+                Education
+            </h1>
+
+            <p class="mt-2 text-gray-500">
+                Add your educational qualifications to help employers
+                understand your academic background.
+            </p>
+        </div>
+
+
+		<!-- Education Form -->
+		<div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+
+		    <h2 class="text-xl font-semibold text-gray-900 mb-6">
+		        Add Education
+		    </h2>
+
+		    <form id="educationForm">
+
+		        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+		            <!-- College -->
+		            <div>
+		                <label class="block mb-2 text-sm font-medium text-gray-900">
+		                    College / University *
+		                </label>
+
+		                <input type="text"
+		                       id="college"
+		                       name="college"
+		                       placeholder="Enter college or university"
+		                       class="w-full p-2.5 border border-gray-300 rounded-lg">
+		            </div>
+
+		            <!-- Degree -->
+		            <div>
+		                <label class="block mb-2 text-sm font-medium text-gray-900">
+		                    Degree *
+		                </label>
+
+		                <select id="degree"
+		                        name="degree"
+		                        class="w-full p-2.5 border border-gray-300 rounded-lg">
+
+		                    <option value="">Select degree</option>
+		                    <option value="HIGH_SCHOOL">High School</option>
+		                    <option value="DIPLOMA">Diploma</option>
+		                    <option value="BACHELOR">Bachelor's</option>
+		                    <option value="MASTER">Master's</option>
+		                    <option value="PHD">PhD</option>
+		                    <option value="OTHER">Other</option>
+
+		                </select>
+		            </div>
+
+		            <!-- Specialization -->
+		            <div>
+		                <label class="block mb-2 text-sm font-medium text-gray-900">
+		                    Specialization *
+		                </label>
+
+		                <input type="text"
+		                       id="specialization"
+		                       name="specialization"
+		                       placeholder="e.g. Computer Science"
+		                       class="w-full p-2.5 border border-gray-300 rounded-lg">
+		            </div>
+
+		            <!-- Start Year -->
+		            <div>
+		                <label class="block mb-2 text-sm font-medium text-gray-900">
+		                    Start Year *
+		                </label>
+
+		                <select id="startYear"
+		                        name="startYear"
+		                        class="w-full p-2.5 border border-gray-300 rounded-lg">
+
+		                    <option value="">Select year</option>
+
+		                    <option th:each="year : ${#numbers.sequence(1980, 2030)}"
+		                            th:value="${year}"
+		                            th:text="${year}">
+		                    </option>
+
+		                </select>
+		            </div>
+
+		            <!-- Graduation Year -->
+		            <div>
+		                <label class="block mb-2 text-sm font-medium text-gray-900">
+		                    Graduation Year *
+		                </label>
+
+		                <select id="graduationYear"
+		                        name="graduationYear"
+		                        class="w-full p-2.5 border border-gray-300 rounded-lg">
+
+		                    <option value="">Select year</option>
+
+		                    <option th:each="year : ${#numbers.sequence(1980, 2035)}"
+		                            th:value="${year}"
+		                            th:text="${year}">
+		                    </option>
+
+		                </select>
+		            </div>
+
+		            <!-- Score -->
+		            <div>
+		                <label class="block mb-2 text-sm font-medium text-gray-900">
+		                    CGPA / Percentage *
+		                </label>
+
+		                <input type="text"
+		                       id="score"
+		                       name="score"
+		                       placeholder="e.g. 8.5 or 85%"
+		                       class="w-full p-2.5 border border-gray-300 rounded-lg">
+		            </div>
+
+		        </div>
+
+		        <!-- Buttons -->
+		        <div class="flex justify-end gap-3 mt-8">
+
+		            <button type="button"
+		                    id="clearBtn"
+		                    class="px-5 py-2.5 text-sm font-medium text-gray-900
+		                           bg-gray-100 hover:bg-gray-200 rounded-lg">
+		                Clear
+		            </button>
+
+		            <button type="button"
+		                    id="addBtn"
+		                    class="px-5 py-2.5 text-sm font-medium text-white
+		                           bg-blue-600 hover:bg-blue-700 rounded-lg">
+		                Add Education
+		            </button>
+
+		        </div>
+
+		    </form>
+		</div>
+
+
+		<!-- Your Education -->
+		<div class="mt-8 bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+
+		    <div class="flex items-center justify-between mb-6">
+
+		        <h2 class="text-xl font-semibold text-gray-900">
+		            Your Education
+		        </h2>
+
+		        <span id="recordCount"
+		              class="text-sm text-gray-500">
+		            0 Records
+		        </span>
+
+		    </div>
+
+		    <!-- Records will appear here -->
+		    <div id="educationRecords" class="space-y-4">
+
+		        <!-- Empty state -->
+		        <div id="emptyState"
+		             class="text-center py-10">
+
+		            <p class="text-gray-500">
+		                No education details added yet.
+		            </p>
+
+		        </div>
+
+		    </div>
+
+		</div>
+
+        <!-- Continue -->
+        <div class="flex justify-end mt-6">
+
+            <a th:href="@{/create/skills}"
+               class="px-6 py-2.5 text-sm font-medium text-white
+                      bg-blue-600 hover:bg-blue-700 rounded-lg">
+
+                Save & Continue
+
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+<script th:src="@{/js/education.js}"></script>
+
+</body>
+</html>
