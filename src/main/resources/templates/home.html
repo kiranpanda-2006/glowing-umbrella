@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}">
+
+<head>
+    <title>Smart Job Management</title>
+</head>
+
+<body>
+
+<main layout:fragment="content">
+
+    <section class="min-h-[70vh] flex items-center justify-center px-6">
+
+        <div class="text-center max-w-3xl">
+
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900">
+                Find Your Next
+                <span class="text-blue-600">Opportunity</span>
+            </h1>
+
+            <p class="mt-6 text-lg text-gray-500">
+                Build your professional profile, discover opportunities,
+                and connect with the right employers.
+            </p>
+
+            <div class="mt-8 flex justify-center gap-4">
+
+                <a href="/login"
+                   class="px-6 py-3 text-white bg-blue-600
+                          hover:bg-blue-700 rounded-lg">
+                    Login
+                </a>
+
+                <a href="/register"
+                   class="px-6 py-3 text-gray-900 bg-gray-100
+                          hover:bg-gray-200 rounded-lg">
+                    Register
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>

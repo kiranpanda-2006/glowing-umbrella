@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}">
+
+<head>
+    <title>Certifications</title>
+</head>
+
+<body>
+
+<main layout:fragment="content">
+
+    <div class="max-w-5xl mx-auto px-6 py-10">
+
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">
+                Certifications
+            </h1>
+
+            <p class="mt-2 text-gray-500">
+                Add your professional certifications and credentials.
+                This section is optional.
+            </p>
+        </div>
+
+
+        <!-- Certification Form -->
+        <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+
+            <h2 class="text-xl font-semibold text-gray-900 mb-6">
+                Add Certification
+            </h2>
+
+            <form>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <!-- Certification Name -->
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900">
+                            Certification Name
+                        </label>
+
+                        <input type="text"
+                               name="certificationName"
+                               placeholder="e.g. AWS Certified Developer"
+                               class="w-full p-2.5 border border-gray-300 rounded-lg
+                                      focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+
+                    <!-- Issuing Organization -->
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900">
+                            Issuing Organization
+                        </label>
+
+                        <input type="text"
+                               name="issuingOrganization"
+                               placeholder="e.g. Amazon Web Services"
+                               class="w-full p-2.5 border border-gray-300 rounded-lg
+                                      focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+
+                    <!-- Issue Date -->
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900">
+                            Issue Date
+                        </label>
+
+                        <input type="date"
+                               name="issueDate"
+                               class="w-full p-2.5 border border-gray-300 rounded-lg
+                                      focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+
+                    <!-- Credential ID -->
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900">
+                            Credential ID
+                        </label>
+
+                        <input type="text"
+                               name="credentialId"
+                               placeholder="Enter credential ID"
+                               class="w-full p-2.5 border border-gray-300 rounded-lg
+                                      focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                </div>
+
+
+                <!-- Credential URL -->
+                <div class="mt-6">
+
+                    <label class="block mb-2 text-sm font-medium text-gray-900">
+                        Credential URL
+                    </label>
+
+                    <input type="url"
+                           name="credentialUrl"
+                           placeholder="https://example.com/certificate"
+                           class="w-full p-2.5 border border-gray-300 rounded-lg
+                                  focus:ring-blue-500 focus:border-blue-500">
+
+                </div>
+
+
+                <!-- Buttons -->
+                <div class="flex justify-end gap-3 mt-8">
+
+                    <button type="button"
+                            class="px-5 py-2.5 text-sm font-medium
+                                   text-gray-900 bg-gray-100
+                                   hover:bg-gray-200 rounded-lg">
+                        Clear
+                    </button>
+
+                    <button type="button"
+                            class="px-5 py-2.5 text-sm font-medium
+                                   text-white bg-blue-600
+                                   hover:bg-blue-700 rounded-lg">
+                        Add Certification
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- Added Certifications -->
+        <div class="mt-8 bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+
+            <h2 class="text-xl font-semibold text-gray-900 mb-6">
+                Your Certifications
+            </h2>
+
+
+            <!-- Empty State -->
+            <div class="text-center py-10">
+
+                <svg class="w-12 h-12 mx-auto mb-3 text-gray-400"
+                     fill="none"
+                     stroke="currentColor"
+                     viewBox="0 0 24 24">
+
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5l2 2h3a2 2 0 012 2v12a2 2 0 01-2 2z"/>
+
+                </svg>
+
+                <p class="text-gray-500">
+                    No certifications added yet.
+                </p>
+
+                <p class="text-sm text-gray-400 mt-1">
+                    You can skip this section if you don't have any.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Continue -->
+        <div class="flex justify-end mt-6">
+
+            <a href="/create/resume"
+               class="px-6 py-2.5 text-sm font-medium text-white
+                      bg-blue-600 hover:bg-blue-700 rounded-lg">
+                Save & Continue
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+</html>

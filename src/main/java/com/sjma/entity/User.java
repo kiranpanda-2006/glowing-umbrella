@@ -1,6 +1,10 @@
 package com.sjma.entity;
 
+
+
 import com.sjma.converter.BooleanToStringConverter;
+import com.sjma.entity.candidateinfoEntity.CandidateProfileEntity;
+
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -64,4 +68,7 @@ public class User {
 	@Convert(converter = BooleanToStringConverter.class)
 	@NotNull
 	private Boolean terms;
+	
+	@OneToOne
+	private CandidateProfileEntity profile;
 }

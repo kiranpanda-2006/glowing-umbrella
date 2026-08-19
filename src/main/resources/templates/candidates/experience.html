@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}">
+
+<head>
+    <title>Work Experience</title>
+</head>
+
+<body>
+
+<main layout:fragment="content">
+
+    <div class="max-w-5xl mx-auto px-6 py-10">
+
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">
+                Work Experience
+            </h1>
+
+            <p class="mt-2 text-gray-500">
+                Add your professional experience. This section is optional
+                for freshers.
+            </p>
+        </div>
+
+
+        <!-- Experience Form -->
+        <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+
+            <h2 class="text-xl font-semibold text-gray-900 mb-6">
+                Add Experience
+            </h2>
+
+            <form>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <!-- Company -->
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900">
+                            Company Name
+                        </label>
+
+                        <input type="text"
+                               name="companyName"
+                               placeholder="Enter company name"
+                               class="w-full p-2.5 border border-gray-300 rounded-lg
+                                      focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+
+                    <!-- Job Title -->
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900">
+                            Job Title
+                        </label>
+
+                        <input type="text"
+                               name="jobTitle"
+                               placeholder="e.g. Java Developer"
+                               class="w-full p-2.5 border border-gray-300 rounded-lg
+                                      focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+
+                    <!-- Employment Type -->
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900">
+                            Employment Type
+                        </label>
+
+                        <select name="employmentType"
+                                class="w-full p-2.5 border border-gray-300 rounded-lg
+                                       focus:ring-blue-500 focus:border-blue-500">
+
+                            <option value="">Select type</option>
+                            <option value="FULL_TIME">Full Time</option>
+                            <option value="PART_TIME">Part Time</option>
+                            <option value="INTERNSHIP">Internship</option>
+                            <option value="CONTRACT">Contract</option>
+                            <option value="FREELANCE">Freelance</option>
+
+                        </select>
+                    </div>
+
+
+                    <!-- Location -->
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900">
+                            Location
+                        </label>
+
+                        <input type="text"
+                               name="location"
+                               placeholder="e.g. Bhubaneswar, Odisha"
+                               class="w-full p-2.5 border border-gray-300 rounded-lg
+                                      focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+
+                    <!-- Start Date -->
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900">
+                            Start Date
+                        </label>
+
+                        <input type="date"
+                               name="startDate"
+                               class="w-full p-2.5 border border-gray-300 rounded-lg
+                                      focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+
+                    <!-- End Date -->
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900">
+                            End Date
+                        </label>
+
+                        <input type="date"
+                               name="endDate"
+                               class="w-full p-2.5 border border-gray-300 rounded-lg
+                                      focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                </div>
+
+
+                <!-- Currently Working -->
+                <div class="flex items-center mt-6">
+
+                    <input id="currentlyWorking"
+                           type="checkbox"
+                           name="currentlyWorking"
+                           class="w-4 h-4 text-blue-600
+                                  border-gray-300 rounded">
+
+                    <label for="currentlyWorking"
+                           class="ms-2 text-sm font-medium text-gray-900">
+                        I currently work here
+                    </label>
+
+                </div>
+
+
+                <!-- Description -->
+                <div class="mt-6">
+
+                    <label class="block mb-2 text-sm font-medium text-gray-900">
+                        Job Description
+                    </label>
+
+                    <textarea name="description"
+                              rows="5"
+                              placeholder="Describe your responsibilities, achievements and work..."
+                              class="w-full p-2.5 border border-gray-300 rounded-lg
+                                     focus:ring-blue-500 focus:border-blue-500"></textarea>
+
+                </div>
+
+
+                <!-- Buttons -->
+                <div class="flex justify-end gap-3 mt-8">
+
+                    <button type="button"
+                            class="px-5 py-2.5 text-sm font-medium
+                                   text-gray-900 bg-gray-100
+                                   hover:bg-gray-200 rounded-lg">
+                        Clear
+                    </button>
+
+                    <button type="button"
+                            class="px-5 py-2.5 text-sm font-medium
+                                   text-white bg-blue-600
+                                   hover:bg-blue-700 rounded-lg">
+                        Add Experience
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- Added Experience -->
+        <div class="mt-8 bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+
+            <h2 class="text-xl font-semibold text-gray-900 mb-6">
+                Your Experience
+            </h2>
+
+            <!-- Empty State -->
+            <div class="text-center py-10">
+
+                <svg class="w-12 h-12 mx-auto mb-3 text-gray-400"
+                     fill="none"
+                     stroke="currentColor"
+                     viewBox="0 0 24 24">
+
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d="M20 7h-4V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/>
+
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d="M8 7V5h8v2"/>
+                </svg>
+
+                <p class="text-gray-500">
+                    No work experience added yet.
+                </p>
+
+                <p class="text-sm text-gray-400 mt-1">
+                    Freshers can skip this section.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Continue -->
+        <div class="flex justify-end mt-6">
+
+            <a href="/create/projects"
+               class="px-6 py-2.5 text-sm font-medium text-white
+                      bg-blue-600 hover:bg-blue-700 rounded-lg">
+                Save & Continue
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+</html>
