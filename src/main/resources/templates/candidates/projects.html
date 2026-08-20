@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -16,6 +17,7 @@
 
         <!-- Header -->
         <div class="mb-8">
+
             <h1 class="text-3xl font-bold text-gray-900">
                 Projects
             </h1>
@@ -23,6 +25,7 @@
             <p class="mt-2 text-gray-500">
                 Showcase projects that demonstrate your skills and experience.
             </p>
+
         </div>
 
 
@@ -33,7 +36,10 @@
                 Add Project
             </h2>
 
-            <form>
+            <form id="projectForm"
+                  th:action="@{/create/projects}"
+                  th:object="${project}"
+                  method="post">
 
                 <!-- Project Name -->
                 <div class="mb-6">
@@ -43,10 +49,15 @@
                     </label>
 
                     <input type="text"
-                           name="projectName"
+                           th:field="*{projectName}"
                            placeholder="e.g. Job Management System"
                            class="w-full p-2.5 border border-gray-300 rounded-lg
                                   focus:ring-blue-500 focus:border-blue-500">
+
+                    <p th:if="${#fields.hasErrors('projectName')}"
+                       th:errors="*{projectName}"
+                       class="mt-1 text-sm text-red-600">
+                    </p>
 
                 </div>
 
@@ -58,11 +69,16 @@
                         Project Description
                     </label>
 
-                    <textarea name="description"
+                    <textarea th:field="*{projectDescription}"
                               rows="5"
                               placeholder="Describe your project, your role and what you achieved..."
                               class="w-full p-2.5 border border-gray-300 rounded-lg
                                      focus:ring-blue-500 focus:border-blue-500"></textarea>
+
+                    <p th:if="${#fields.hasErrors('projectDescription')}"
+                       th:errors="*{projectDescription}"
+                       class="mt-1 text-sm text-red-600">
+                    </p>
 
                 </div>
 
@@ -75,10 +91,15 @@
                     </label>
 
                     <input type="text"
-                           name="technologies"
+                           th:field="*{technologyUsed}"
                            placeholder="e.g. Java, Spring Boot, MySQL, JavaScript"
                            class="w-full p-2.5 border border-gray-300 rounded-lg
                                   focus:ring-blue-500 focus:border-blue-500">
+
+                    <p th:if="${#fields.hasErrors('technologyUsed')}"
+                       th:errors="*{technologyUsed}"
+                       class="mt-1 text-sm text-red-600">
+                    </p>
 
                 </div>
 
@@ -94,10 +115,15 @@
                         </label>
 
                         <input type="url"
-                               name="githubUrl"
+                               th:field="*{githubUrl}"
                                placeholder="https://github.com/username/project"
                                class="w-full p-2.5 border border-gray-300 rounded-lg
                                       focus:ring-blue-500 focus:border-blue-500">
+
+                        <p th:if="${#fields.hasErrors('githubUrl')}"
+                           th:errors="*{githubUrl}"
+                           class="mt-1 text-sm text-red-600">
+                        </p>
 
                     </div>
 
@@ -110,10 +136,15 @@
                         </label>
 
                         <input type="url"
-                               name="liveUrl"
+                               th:field="*{liveUrl}"
                                placeholder="https://example.com"
                                class="w-full p-2.5 border border-gray-300 rounded-lg
                                       focus:ring-blue-500 focus:border-blue-500">
+
+                        <p th:if="${#fields.hasErrors('liveUrl')}"
+                           th:errors="*{liveUrl}"
+                           class="mt-1 text-sm text-red-600">
+                        </p>
 
                     </div>
 
@@ -127,14 +158,18 @@
                             class="px-5 py-2.5 text-sm font-medium
                                    text-gray-900 bg-gray-100
                                    hover:bg-gray-200 rounded-lg">
+
                         Clear
+
                     </button>
 
                     <button type="button"
                             class="px-5 py-2.5 text-sm font-medium
                                    text-white bg-blue-600
                                    hover:bg-blue-700 rounded-lg">
+
                         Add Project
+
                     </button>
 
                 </div>
@@ -183,11 +218,14 @@
         <!-- Continue -->
         <div class="flex justify-end mt-6">
 
-            <a href="/create/certifications"
-               class="px-6 py-2.5 text-sm font-medium text-white
-                      bg-blue-600 hover:bg-blue-700 rounded-lg">
+            <button type="submit"
+                    form="projectForm"
+                    class="px-6 py-2.5 text-sm font-medium text-white
+                           bg-blue-600 hover:bg-blue-700 rounded-lg">
+
                 Save & Continue
-            </a>
+
+            </button>
 
         </div>
 
@@ -196,4 +234,5 @@
 </main>
 
 </body>
+
 </html>

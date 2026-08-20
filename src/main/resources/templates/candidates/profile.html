@@ -1,195 +1,217 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/main}">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/main}">
 
 <head>
-    <title>Complete Profile</title>
+	<title>Complete Profile</title>
 </head>
 
 <body>
 
-<main layout:fragment="content">
+	<main layout:fragment="content">
 
-    <div class="max-w-3xl mx-auto px-4 py-6">
+		<div class="max-w-3xl mx-auto px-4 py-6">
 
-        <!-- Header -->
-        <div class="text-center mb-5">
+			<!-- Header -->
+			<div class="text-center mb-5">
 
-            <h1 class="text-xl font-bold text-gray-900">
-                Complete Your Profile
-            </h1>
+				<h1 class="text-xl font-bold text-gray-900">
+					Complete Your Profile
+				</h1>
 
-            <p class="text-xs text-gray-500 mt-1">
-                Add your information to improve your job opportunities.
-            </p>
-
-        </div>
-
-
-        <!-- Form Card -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4">
-
-            <h2 class="text-sm font-semibold text-gray-900 mb-4">
-                Personal Information
-            </h2>
-
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-
-                <!-- Full Name -->
-                <div>
-
-                    <label class="block mb-1 text-xs font-medium text-gray-700">
-                        Full Name *
-                    </label>
-
-                    <input type="text"
-                           name="fullName"
-                           class="w-full h-9 px-2.5 text-xs bg-gray-50
-                                  border border-gray-300 text-gray-900
-                                  rounded-md focus:ring-2
-                                  focus:ring-blue-500 focus:border-blue-500"
-                           placeholder="Enter your full name">
-
-                </div>
-
-
-                <!-- Date of Birth -->
-                <div>
-
-                    <label class="block mb-1 text-xs font-medium text-gray-700">
-                        Date of Birth *
-                    </label>
-
-                    <input type="date"
-                           name="dateOfBirth"
-                           class="w-full h-9 px-2.5 text-xs bg-gray-50
-                                  border border-gray-300 text-gray-900
-                                  rounded-md focus:ring-2
-                                  focus:ring-blue-500 focus:border-blue-500">
-
-                </div>
-
-
-                <!-- Mobile -->
-                <div>
-
-                    <label class="block mb-1 text-xs font-medium text-gray-700">
-                        Mobile Number *
-                    </label>
-
-                    <input type="tel"
-                           name="mobileNumber"
-                           class="w-full h-9 px-2.5 text-xs bg-gray-50
-                                  border border-gray-300 text-gray-900
-                                  rounded-md focus:ring-2
-                                  focus:ring-blue-500 focus:border-blue-500"
-                           placeholder="Enter mobile number">
-
-                </div>
-
-
-                <!-- Gender -->
-                <div>
-
-                    <label class="block mb-1 text-xs font-medium text-gray-700">
-                        Gender
-                    </label>
-
-                    <select name="gender"
-                            class="w-full h-9 px-2.5 text-xs bg-gray-50
-                                   border border-gray-300 text-gray-900
-                                   rounded-md focus:ring-2
-                                   focus:ring-blue-500 focus:border-blue-500">
-
-                        <option value="">Select gender</option>
-                        <option value="MALE">Male</option>
-                        <option value="FEMALE">Female</option>
-                        <option value="OTHER">Other</option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- Location -->
-                <div>
-
-                    <label class="block mb-1 text-xs font-medium text-gray-700">
-                        Location *
-                    </label>
-
-                    <input type="text"
-                           name="location"
-                           class="w-full h-9 px-2.5 text-xs bg-gray-50
-                                  border border-gray-300 text-gray-900
-                                  rounded-md focus:ring-2
-                                  focus:ring-blue-500 focus:border-blue-500"
-                           placeholder="City, State">
-
-                </div>
-
-
-                <!-- Profile Photo -->
-                <div>
-
-                    <label class="block mb-1 text-xs font-medium text-gray-700">
-                        Profile Photo
-                    </label>
-
-                    <input type="file"
-                           name="profilePhoto"
-                           accept="image/*"
-                           class="w-full h-9 px-2 py-1 text-xs bg-gray-50
-                                  border border-gray-300 text-gray-900
-                                  rounded-md
-                                  file:mr-2 file:py-1 file:px-2
-                                  file:rounded file:border-0
-                                  file:text-xs file:font-medium
-                                  file:bg-blue-50 file:text-blue-600
-                                  hover:file:bg-blue-100">
-
-                </div>
-
-            </div>
-
-
-            <!-- Address -->
-            <div class="mt-3">
-
-                <label class="block mb-1 text-xs font-medium text-gray-700">
-                    Address
-                </label>
-
-                <textarea name="address"
-                          rows="2"
-                          class="w-full px-2.5 py-2 text-xs bg-gray-50
-                                 border border-gray-300 text-gray-900
-                                 rounded-md focus:ring-2
-                                 focus:ring-blue-500 focus:border-blue-500"
-                          placeholder="Enter your address"></textarea>
-
-            </div>
-
-
-			<!-- Continue -->
-			<div class="flex justify-end mt-6">
-
-				<a th:href="@{/create/education}"
-				   class="px-6 py-2.5 text-sm font-medium text-white
-				          bg-blue-600 hover:bg-blue-700 rounded-lg">
-				    Save & Continue
-				</a>
+				<p class="text-xs text-gray-500 mt-1">
+					Add your information to improve your job opportunities.
+				</p>
 
 			</div>
 
-        </div>
 
-    </div>
+			<!-- Form Card -->
+			<div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4">
 
-</main>
+				<h2 class="text-sm font-semibold text-gray-900 mb-4">
+					Personal Information
+				</h2>
+
+
+				<!-- FORM -->
+				<form th:action="@{/create/profile}" th:object="${profile}" method="post" enctype="multipart/form-data">
+
+
+					<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+
+						<!-- Full Name -->
+						<div>
+
+							<label class="block mb-1 text-xs font-medium text-gray-700">
+								Full Name *
+							</label>
+
+							<input type="text" th:field="*{fullName}" class="w-full h-9 px-2.5 text-xs bg-gray-50
+                                      border border-gray-300 text-gray-900
+                                      rounded-md focus:ring-2
+                                      focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your full name">
+
+							<!-- Validation Error -->
+							<div th:replace="~{fragments/validation-message :: validationMessage('fullName')}">
+
+							</div>
+
+						</div>
+
+
+
+						<!-- Date of Birth -->
+						<div>
+
+							<label class="block mb-1 text-xs font-medium text-gray-700">
+								Date of Birth *
+							</label>
+
+							<input type="date" th:field="*{dateOfBirth}" class="w-full h-9 px-2.5 text-xs bg-gray-50
+                                      border border-gray-300 text-gray-900
+                                      rounded-md focus:ring-2
+                                      focus:ring-blue-500 focus:border-blue-500">
+
+							<!-- Validation Error -->
+							<div th:replace="~{fragments/validation-message :: validationMessage('dateOfBirth')}">
+
+							</div>
+
+						</div>
+
+
+						<!-- Mobile -->
+						<div>
+
+							<label class="block mb-1 text-xs font-medium text-gray-700">
+								Mobile Number *
+							</label>
+
+							<input type="tel" th:field="*{mobileNumber}" class="w-full h-9 px-2.5 text-xs bg-gray-50
+                                      border border-gray-300 text-gray-900
+                                      rounded-md focus:ring-2
+                                      focus:ring-blue-500 focus:border-blue-500" placeholder="Enter mobile number">
+
+							<!-- Validation Error -->
+							<div th:replace="~{fragments/validation-message :: validationMessage('mobileNumber')}">
+
+							</div>
+
+						</div>
+
+
+						<!-- Gender -->
+						<div>
+
+							<label class="block mb-1 text-xs font-medium text-gray-700">
+								Gender
+							</label>
+
+							<select th:field="*{gender}" class="w-full h-9 px-2.5 text-xs bg-gray-50
+                                       border border-gray-300 text-gray-900
+                                       rounded-md focus:ring-2
+                                       focus:ring-blue-500 focus:border-blue-500">
+
+								<option value="">Select gender</option>
+								<option value="MALE">Male</option>
+								<option value="FEMALE">Female</option>
+								<option value="OTHER">Other</option>
+
+							</select>
+
+							<!-- Validation Error -->
+							<div th:replace="~{fragments/validation-message :: validationMessage('gender')}">
+
+							</div>
+
+						</div>
+
+
+						<!-- Location -->
+						<div>
+
+							<label class="block mb-1 text-xs font-medium text-gray-700">
+								Location *
+							</label>
+
+							<input type="text" th:field="*{location}" class="w-full h-9 px-2.5 text-xs bg-gray-50
+                                      border border-gray-300 text-gray-900
+                                      rounded-md focus:ring-2
+                                      focus:ring-blue-500 focus:border-blue-500" placeholder="City, State">
+
+							<!-- Validation Error -->
+							<div th:replace="~{fragments/validation-message :: validationMessage('location')}">
+
+							</div>
+
+						</div>
+
+
+						<!-- Profile Photo -->
+						<div>
+
+							<label class="block mb-1 text-xs font-medium text-gray-700">
+								Profile Photo
+							</label>
+
+							<input type="file" th:field="*{profilePhoto}" accept="image/*" class="w-full h-9 px-2 py-1 text-xs bg-gray-50
+                                      border border-gray-300 text-gray-900
+                                      rounded-md
+                                      file:mr-2 file:py-1 file:px-2
+                                      file:rounded file:border-0
+                                      file:text-xs file:font-medium
+                                      file:bg-blue-50 file:text-blue-600
+                                      hover:file:bg-blue-100">
+
+						</div>
+
+					</div>
+
+
+					<!-- Address -->
+					<div class="mt-3">
+
+						<label class="block mb-1 text-xs font-medium text-gray-700">
+							Address
+						</label>
+
+						<textarea th:field="*{address}" rows="2" class="w-full px-2.5 py-2 text-xs bg-gray-50
+                                     border border-gray-300 text-gray-900
+                                     rounded-md focus:ring-2
+                                     focus:ring-blue-500 focus:border-blue-500"
+							placeholder="Enter your address"></textarea>
+
+						<!-- Validation Error -->
+						<div th:replace="~{fragments/validation-message :: validationMessage('address')}">
+
+						</div>
+
+					</div>
+
+
+					<!-- Continue -->
+					<div class="flex justify-end mt-6">
+
+						<button type="submit" class="px-6 py-2.5 text-sm font-medium text-white
+                                   bg-blue-600 hover:bg-blue-700 rounded-lg">
+
+							Save & Continue
+
+						</button>
+
+					</div>
+
+				</form>
+
+			</div>
+
+		</div>
+
+	</main>
 
 </body>
+
 </html>

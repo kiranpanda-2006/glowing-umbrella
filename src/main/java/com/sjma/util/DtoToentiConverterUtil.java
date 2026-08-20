@@ -35,7 +35,6 @@ public class DtoToentiConverterUtil {
 		profileEntity.setLocation(profile.getLocation());
 		profileEntity.setDateOfBirth(profile.getDateOfBirth());
 		profileEntity.setMobileNumber( profile.getMobileNumber());
-		profileEntity.setProfilePhoto(profile.getProfilePhoto());
 		
 		return profileEntity;
 	}
@@ -73,11 +72,11 @@ public class DtoToentiConverterUtil {
 
         experience.setCompanyName(dto.getCompanyName());
         experience.setJobTitle(dto.getJobTitle());
-        experience.setEmployeeType(dto.getEmployeeType());
+        experience.setEmploymentType(dto.getEmploymentType());
         experience.setLocation(dto.getLocation());
         experience.setStartDate(dto.getStartDate());
         experience.setEndDate(dto.getEndDate());
-        experience.setCheckBox(dto.getCheckBox());
+        experience.setCurrentelyWorking(dto.getCurrentelyWorking());
         experience.setDescription(dto.getDescription());
 
         return experience;
@@ -88,8 +87,8 @@ public class DtoToentiConverterUtil {
         JobPreference jobPreferences = new JobPreference();
 
         jobPreferences.setRole(dto.getRole());
-        jobPreferences.setPreferedLocation(dto.getPreferedLocation());
-        jobPreferences.setEmployeeType(dto.getEmployeeType());
+        jobPreferences.setPreferedLocation(dto.getPreferredLocation());
+        jobPreferences.setEmployeeType(dto.getEmploymentType());
         jobPreferences.setExperienceLevel(dto.getExperienceLevel());
         jobPreferences.setExpectedSalary(dto.getExpectedSalary());
         jobPreferences.setWorkMode(dto.getWorkMode());
@@ -105,7 +104,7 @@ public class DtoToentiConverterUtil {
         projects.setProjectDescription(dto.getProjectDescription());
         projects.setTechnologyUsed(dto.getTechnologyUsed());
         projects.setGithubUrl(dto.getGithubUrl());
-        projects.setLiveProjectUrl(dto.getLiveProjectUrl());
+        projects.setLiveUrl(dto.getLiveUrl());
 
         return projects;
     }

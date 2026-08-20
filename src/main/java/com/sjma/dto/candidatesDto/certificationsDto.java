@@ -1,5 +1,6 @@
 package com.sjma.dto.candidatesDto;
 import java.sql.Date;
+import java.time.LocalDate;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +13,7 @@ public class certificationsDto {
 	
 	private String issueingOrganization;
 	
-	private Date issuedAt;
+	private LocalDate issuedAt;
 	
 	private String cresentialId;
 	

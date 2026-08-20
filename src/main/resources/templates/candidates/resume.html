@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -16,6 +17,7 @@
 
         <!-- Header -->
         <div class="mb-8">
+
             <h1 class="text-3xl font-bold text-gray-900">
                 Resume
             </h1>
@@ -24,6 +26,7 @@
                 Upload your latest resume to help employers understand
                 your qualifications and experience.
             </p>
+
         </div>
 
 
@@ -39,10 +42,13 @@
             </p>
 
 
-            <form enctype="multipart/form-data">
+            <form id="resumeForm"
+                  th:action="@{/create/resume}"
+                  method="post"
+                  enctype="multipart/form-data">
 
                 <!-- Upload Area -->
-                <label for="resume"
+                <label for="resumeFile"
                        class="flex flex-col items-center justify-center
                               w-full h-64 border-2 border-gray-300
                               border-dashed rounded-lg cursor-pointer
@@ -63,10 +69,13 @@
                         </svg>
 
                         <p class="mb-2 text-sm text-gray-500">
+
                             <span class="font-semibold">
                                 Click to upload
                             </span>
+
                             or drag and drop
+
                         </p>
 
                         <p class="text-xs text-gray-500">
@@ -75,8 +84,10 @@
 
                     </div>
 
-                    <input id="resume"
-                           name="resume"
+                    <!-- IMPORTANT:
+                         This is MultipartFile, NOT ResumeDto.resume -->
+                    <input id="resumeFile"
+                           name="resumeFile"
                            type="file"
                            accept=".pdf,application/pdf"
                            class="hidden">
@@ -85,8 +96,9 @@
 
 
                 <!-- Selected File -->
-                <div class="mt-6 p-4 border border-gray-200 rounded-lg
-                            flex items-center justify-between">
+                <div id="selectedFile"
+                     class="hidden mt-6 p-4 border border-gray-200
+                            rounded-lg flex items-center justify-between">
 
                     <div class="flex items-center gap-3">
 
@@ -108,20 +120,27 @@
                         </svg>
 
                         <div>
-                            <p class="font-medium text-gray-900">
+
+                            <p id="fileName"
+                               class="font-medium text-gray-900">
                                 No resume selected
                             </p>
 
-                            <p class="text-sm text-gray-500">
+                            <p id="fileSize"
+                               class="text-sm text-gray-500">
                                 Upload your resume
                             </p>
+
                         </div>
 
                     </div>
 
                     <button type="button"
+                            id="removeFile"
                             class="text-sm text-red-600 hover:underline">
+
                         Remove
+
                     </button>
 
                 </div>
@@ -131,17 +150,22 @@
                 <div class="flex justify-end gap-3 mt-8">
 
                     <button type="button"
+                            id="clearResume"
                             class="px-5 py-2.5 text-sm font-medium
                                    text-gray-900 bg-gray-100
                                    hover:bg-gray-200 rounded-lg">
+
                         Clear
+
                     </button>
 
-                    <button type="button"
+                    <button type="submit"
                             class="px-5 py-2.5 text-sm font-medium
                                    text-white bg-blue-600
                                    hover:bg-blue-700 rounded-lg">
+
                         Save Resume
+
                     </button>
 
                 </div>
@@ -154,11 +178,14 @@
         <!-- Continue -->
         <div class="flex justify-end mt-6">
 
-            <a href="/create/job-preferences"
-               class="px-6 py-2.5 text-sm font-medium text-white
-                      bg-blue-600 hover:bg-blue-700 rounded-lg">
+            <button type="submit"
+                    form="resumeForm"
+                    class="px-6 py-2.5 text-sm font-medium text-white
+                           bg-blue-600 hover:bg-blue-700 rounded-lg">
+
                 Save & Continue
-            </a>
+
+            </button>
 
         </div>
 
@@ -166,5 +193,61 @@
 
 </main>
 
+
+<script>
+
+    const resumeFile = document.getElementById("resumeFile");
+    const selectedFile = document.getElementById("selectedFile");
+    const fileName = document.getElementById("fileName");
+    const fileSize = document.getElementById("fileSize");
+    const removeFile = document.getElementById("removeFile");
+    const clearResume = document.getElementById("clearResume");
+
+    resumeFile.addEventListener("change", function () {
+
+        if (this.files.length > 0) {
+
+            const file = this.files[0];
+
+            fileName.textContent = file.name;
+
+            fileSize.textContent =
+                (file.size / 1024).toFixed(2) + " KB";
+
+            selectedFile.classList.remove("hidden");
+
+        }
+
+    });
+
+
+    removeFile.addEventListener("click", function () {
+
+        resumeFile.value = "";
+
+        selectedFile.classList.add("hidden");
+
+        fileName.textContent = "No resume selected";
+
+        fileSize.textContent = "Upload your resume";
+
+    });
+
+
+    clearResume.addEventListener("click", function () {
+
+        resumeFile.value = "";
+
+        selectedFile.classList.add("hidden");
+
+        fileName.textContent = "No resume selected";
+
+        fileSize.textContent = "Upload your resume";
+
+    });
+
+</script>
+
 </body>
+
 </html>

@@ -9,9 +9,9 @@ public class JobPreferencesDto {
 
 	private String role;
 	
-	private String preferedLocation;
+	private String preferredLocation;
 	
-	private String employeeType;
+	private String employmentType;
 	
 	private String experienceLevel;
 	

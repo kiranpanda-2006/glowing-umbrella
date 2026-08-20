@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -16,6 +17,7 @@
 
         <!-- Header -->
         <div class="mb-8">
+
             <h1 class="text-3xl font-bold text-gray-900">
                 Work Experience
             </h1>
@@ -24,6 +26,7 @@
                 Add your professional experience. This section is optional
                 for freshers.
             </p>
+
         </div>
 
 
@@ -34,45 +37,64 @@
                 Add Experience
             </h2>
 
-            <form>
+
+            <form id="experienceForm"
+                  th:action="@{/create/experience}"
+                  th:object="${experience}"
+                  method="post">
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                     <!-- Company -->
                     <div>
+
                         <label class="block mb-2 text-sm font-medium text-gray-900">
                             Company Name
                         </label>
 
                         <input type="text"
-                               name="companyName"
+                               th:field="*{companyName}"
                                placeholder="Enter company name"
                                class="w-full p-2.5 border border-gray-300 rounded-lg
                                       focus:ring-blue-500 focus:border-blue-500">
+
+                        <p th:if="${#fields.hasErrors('companyName')}"
+                           th:errors="*{companyName}"
+                           class="mt-1 text-sm text-red-600">
+                        </p>
+
                     </div>
 
 
                     <!-- Job Title -->
                     <div>
+
                         <label class="block mb-2 text-sm font-medium text-gray-900">
                             Job Title
                         </label>
 
                         <input type="text"
-                               name="jobTitle"
+                               th:field="*{jobTitle}"
                                placeholder="e.g. Java Developer"
                                class="w-full p-2.5 border border-gray-300 rounded-lg
                                       focus:ring-blue-500 focus:border-blue-500">
+
+                        <p th:if="${#fields.hasErrors('jobTitle')}"
+                           th:errors="*{jobTitle}"
+                           class="mt-1 text-sm text-red-600">
+                        </p>
+
                     </div>
 
 
                     <!-- Employment Type -->
                     <div>
+
                         <label class="block mb-2 text-sm font-medium text-gray-900">
                             Employment Type
                         </label>
 
-                        <select name="employmentType"
+                        <select th:field="*{employmentType}"
                                 class="w-full p-2.5 border border-gray-300 rounded-lg
                                        focus:ring-blue-500 focus:border-blue-500">
 
@@ -84,46 +106,73 @@
                             <option value="FREELANCE">Freelance</option>
 
                         </select>
+
+                        <p th:if="${#fields.hasErrors('employmentType')}"
+                           th:errors="*{employmentType}"
+                           class="mt-1 text-sm text-red-600">
+                        </p>
+
                     </div>
 
 
                     <!-- Location -->
                     <div>
+
                         <label class="block mb-2 text-sm font-medium text-gray-900">
                             Location
                         </label>
 
                         <input type="text"
-                               name="location"
+                               th:field="*{location}"
                                placeholder="e.g. Bhubaneswar, Odisha"
                                class="w-full p-2.5 border border-gray-300 rounded-lg
                                       focus:ring-blue-500 focus:border-blue-500">
+
+                        <p th:if="${#fields.hasErrors('location')}"
+                           th:errors="*{location}"
+                           class="mt-1 text-sm text-red-600">
+                        </p>
+
                     </div>
 
 
                     <!-- Start Date -->
                     <div>
+
                         <label class="block mb-2 text-sm font-medium text-gray-900">
                             Start Date
                         </label>
 
                         <input type="date"
-                               name="startDate"
+                               th:field="*{startDate}"
                                class="w-full p-2.5 border border-gray-300 rounded-lg
                                       focus:ring-blue-500 focus:border-blue-500">
+
+                        <p th:if="${#fields.hasErrors('startDate')}"
+                           th:errors="*{startDate}"
+                           class="mt-1 text-sm text-red-600">
+                        </p>
+
                     </div>
 
 
                     <!-- End Date -->
                     <div>
+
                         <label class="block mb-2 text-sm font-medium text-gray-900">
                             End Date
                         </label>
 
                         <input type="date"
-                               name="endDate"
+                               th:field="*{endDate}"
                                class="w-full p-2.5 border border-gray-300 rounded-lg
                                       focus:ring-blue-500 focus:border-blue-500">
+
+                        <p th:if="${#fields.hasErrors('endDate')}"
+                           th:errors="*{endDate}"
+                           class="mt-1 text-sm text-red-600">
+                        </p>
+
                     </div>
 
                 </div>
@@ -134,14 +183,21 @@
 
                     <input id="currentlyWorking"
                            type="checkbox"
-                           name="currentlyWorking"
+                           th:field="*{currentelyWorking}"
                            class="w-4 h-4 text-blue-600
                                   border-gray-300 rounded">
 
                     <label for="currentlyWorking"
                            class="ms-2 text-sm font-medium text-gray-900">
+
                         I currently work here
+
                     </label>
+
+                    <p th:if="${#fields.hasErrors('currentelyWorking')}"
+                       th:errors="*{currentelyWorking}"
+                       class="mt-1 text-sm text-red-600">
+                    </p>
 
                 </div>
 
@@ -153,11 +209,16 @@
                         Job Description
                     </label>
 
-                    <textarea name="description"
+                    <textarea th:field="*{description}"
                               rows="5"
                               placeholder="Describe your responsibilities, achievements and work..."
                               class="w-full p-2.5 border border-gray-300 rounded-lg
                                      focus:ring-blue-500 focus:border-blue-500"></textarea>
+
+                    <p th:if="${#fields.hasErrors('description')}"
+                       th:errors="*{description}"
+                       class="mt-1 text-sm text-red-600">
+                    </p>
 
                 </div>
 
@@ -169,14 +230,18 @@
                             class="px-5 py-2.5 text-sm font-medium
                                    text-gray-900 bg-gray-100
                                    hover:bg-gray-200 rounded-lg">
+
                         Clear
+
                     </button>
 
                     <button type="button"
                             class="px-5 py-2.5 text-sm font-medium
                                    text-white bg-blue-600
                                    hover:bg-blue-700 rounded-lg">
+
                         Add Experience
+
                     </button>
 
                 </div>
@@ -210,6 +275,7 @@
                           stroke-linejoin="round"
                           stroke-width="1.5"
                           d="M8 7V5h8v2"/>
+
                 </svg>
 
                 <p class="text-gray-500">
@@ -228,11 +294,14 @@
         <!-- Continue -->
         <div class="flex justify-end mt-6">
 
-            <a href="/create/projects"
-               class="px-6 py-2.5 text-sm font-medium text-white
-                      bg-blue-600 hover:bg-blue-700 rounded-lg">
+            <button type="submit"
+                    form="experienceForm"
+                    class="px-6 py-2.5 text-sm font-medium text-white
+                           bg-blue-600 hover:bg-blue-700 rounded-lg">
+
                 Save & Continue
-            </a>
+
+            </button>
 
         </div>
 
@@ -241,4 +310,5 @@
 </main>
 
 </body>
+
 </html>

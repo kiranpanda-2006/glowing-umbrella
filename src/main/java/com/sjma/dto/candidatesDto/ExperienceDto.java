@@ -1,6 +1,8 @@
 package com.sjma.dto.candidatesDto;
 
 import java.sql.Date;
+import java.time.LocalDate;
+
 import jakarta.persistence.Lob;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,15 +15,15 @@ public class ExperienceDto {
 	
 	private String jobTitle;
 	
-	private String employeeType;
+	private String employmentType;
 	
 	private String location;
 	
-	private Date startDate;
+	private LocalDate startDate;
 	
-	private Date endDate;
+	private LocalDate endDate;
 	
-	private Boolean checkBox;
+	private Boolean currentelyWorking;
 	
 	private String description;
 }

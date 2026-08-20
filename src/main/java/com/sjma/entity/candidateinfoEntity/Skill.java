@@ -26,4 +26,6 @@ public class Skill {
 	private String dbKnowledge;
 	
 	private String tools;
+	
+	private String otherSkills;
 }

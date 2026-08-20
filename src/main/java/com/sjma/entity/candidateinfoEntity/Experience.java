@@ -1,6 +1,7 @@
 package com.sjma.entity.candidateinfoEntity;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import com.sjma.converter.BooleanToStringConverter;
 
@@ -21,16 +22,16 @@ public class Experience {
 	
 	private String jobTitle;
 	
-	private String employeeType;
+	private String employmentType;
 	
 	private String location;
 	
-	private Date startDate;
+	private LocalDate startDate;
 	
-	private Date endDate;
+	private LocalDate endDate;
 	
 	@Convert(converter = BooleanToStringConverter.class)
-	private Boolean checkBox;
+	private Boolean currentelyWorking;
 	
 	@Lob
 	private String description;

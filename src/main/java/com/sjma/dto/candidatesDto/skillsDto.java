@@ -16,4 +16,6 @@ public class skillsDto {
 	private String database;
 	
 	private String tools;
+	
+	private String otherSkills;
 }

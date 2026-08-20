@@ -1,6 +1,7 @@
 package com.sjma.entity.candidateinfoEntity;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ public class Certifications {
 	
 	private String issueingOrganization;
 	
-	private Date issuedAt;
+	private LocalDate issuedAt;
 	
 	private String cresentialId;
 	

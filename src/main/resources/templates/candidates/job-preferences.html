@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -16,6 +17,7 @@
 
         <!-- Header -->
         <div class="mb-8">
+
             <h1 class="text-3xl font-bold text-gray-900">
                 Job Preferences
             </h1>
@@ -23,6 +25,7 @@
             <p class="mt-2 text-gray-500">
                 Tell us what kind of opportunities you're looking for.
             </p>
+
         </div>
 
 
@@ -33,90 +36,154 @@
                 Your Preferences
             </h2>
 
-            <form>
+            <form th:action="@{/create/job-preferences}"
+                  th:object="${preference}"
+                  method="post">
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                     <!-- Preferred Job Role -->
                     <div>
+
                         <label class="block mb-2 text-sm font-medium text-gray-900">
                             Preferred Job Role *
                         </label>
 
                         <input type="text"
-                               name="preferredRole"
+                               th:field="*{role}"
                                placeholder="e.g. Java Developer"
                                class="w-full p-2.5 border border-gray-300 rounded-lg
                                       focus:ring-blue-500 focus:border-blue-500">
+
+                        <p th:if="${#fields.hasErrors('role')}"
+                           th:errors="*{role}"
+                           class="mt-1 text-sm text-red-600">
+                        </p>
+
                     </div>
 
 
                     <!-- Preferred Location -->
                     <div>
+
                         <label class="block mb-2 text-sm font-medium text-gray-900">
                             Preferred Location
                         </label>
 
                         <input type="text"
-                               name="preferredLocation"
+                               th:field="*{preferredLocation}"
                                placeholder="e.g. Bangalore, Hyderabad"
                                class="w-full p-2.5 border border-gray-300 rounded-lg
                                       focus:ring-blue-500 focus:border-blue-500">
+
+                        <p th:if="${#fields.hasErrors('preferredLocation')}"
+                           th:errors="*{preferredLocation}"
+                           class="mt-1 text-sm text-red-600">
+                        </p>
+
                     </div>
 
 
                     <!-- Employment Type -->
                     <div>
+
                         <label class="block mb-2 text-sm font-medium text-gray-900">
                             Employment Type *
                         </label>
 
-                        <select name="employmentType"
+                        <select th:field="*{employmentType}"
                                 class="w-full p-2.5 border border-gray-300 rounded-lg
                                        focus:ring-blue-500 focus:border-blue-500">
 
                             <option value="">Select employment type</option>
-                            <option value="FULL_TIME">Full Time</option>
-                            <option value="PART_TIME">Part Time</option>
-                            <option value="INTERNSHIP">Internship</option>
-                            <option value="CONTRACT">Contract</option>
-                            <option value="FREELANCE">Freelance</option>
+
+                            <option value="FULL_TIME">
+                                Full Time
+                            </option>
+
+                            <option value="PART_TIME">
+                                Part Time
+                            </option>
+
+                            <option value="INTERNSHIP">
+                                Internship
+                            </option>
+
+                            <option value="CONTRACT">
+                                Contract
+                            </option>
+
+                            <option value="FREELANCE">
+                                Freelance
+                            </option>
 
                         </select>
+
+                        <p th:if="${#fields.hasErrors('employmentType')}"
+                           th:errors="*{employmentType}"
+                           class="mt-1 text-sm text-red-600">
+                        </p>
+
                     </div>
 
 
                     <!-- Experience Level -->
                     <div>
+
                         <label class="block mb-2 text-sm font-medium text-gray-900">
                             Experience Level *
                         </label>
 
-                        <select name="experienceLevel"
+                        <select th:field="*{experienceLevel}"
                                 class="w-full p-2.5 border border-gray-300 rounded-lg
                                        focus:ring-blue-500 focus:border-blue-500">
 
                             <option value="">Select experience level</option>
-                            <option value="FRESHER">Fresher</option>
-                            <option value="ENTRY_LEVEL">Entry Level</option>
-                            <option value="MID_LEVEL">Mid Level</option>
-                            <option value="SENIOR">Senior Level</option>
+
+                            <option value="FRESHER">
+                                Fresher
+                            </option>
+
+                            <option value="ENTRY_LEVEL">
+                                Entry Level
+                            </option>
+
+                            <option value="MID_LEVEL">
+                                Mid Level
+                            </option>
+
+                            <option value="SENIOR">
+                                Senior Level
+                            </option>
 
                         </select>
+
+                        <p th:if="${#fields.hasErrors('experienceLevel')}"
+                           th:errors="*{experienceLevel}"
+                           class="mt-1 text-sm text-red-600">
+                        </p>
+
                     </div>
 
 
                     <!-- Expected Salary -->
                     <div>
+
                         <label class="block mb-2 text-sm font-medium text-gray-900">
                             Expected Salary
                         </label>
 
                         <input type="number"
-                               name="expectedSalary"
+                               th:field="*{expectedSalary}"
                                placeholder="e.g. 600000"
                                class="w-full p-2.5 border border-gray-300 rounded-lg
                                       focus:ring-blue-500 focus:border-blue-500">
+
+                        <p th:if="${#fields.hasErrors('expectedSalary')}"
+                           th:errors="*{expectedSalary}"
+                           class="mt-1 text-sm text-red-600">
+                        </p>
+
                     </div>
 
                 </div>
@@ -131,12 +198,13 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
 
+                        <!-- On-site -->
                         <label class="flex items-center p-4 border
                                       border-gray-300 rounded-lg cursor-pointer
                                       hover:bg-gray-50">
 
                             <input type="checkbox"
-                                   name="workMode"
+                                   th:field="*{workMode}"
                                    value="ON_SITE"
                                    class="w-4 h-4 text-blue-600
                                           border-gray-300 rounded">
@@ -148,12 +216,13 @@
                         </label>
 
 
+                        <!-- Hybrid -->
                         <label class="flex items-center p-4 border
                                       border-gray-300 rounded-lg cursor-pointer
                                       hover:bg-gray-50">
 
                             <input type="checkbox"
-                                   name="workMode"
+                                   th:field="*{workMode}"
                                    value="HYBRID"
                                    class="w-4 h-4 text-blue-600
                                           border-gray-300 rounded">
@@ -165,12 +234,13 @@
                         </label>
 
 
+                        <!-- Remote -->
                         <label class="flex items-center p-4 border
                                       border-gray-300 rounded-lg cursor-pointer
                                       hover:bg-gray-50">
 
                             <input type="checkbox"
-                                   name="workMode"
+                                   th:field="*{workMode}"
                                    value="REMOTE"
                                    class="w-4 h-4 text-blue-600
                                           border-gray-300 rounded">
@@ -189,18 +259,22 @@
                 <!-- Buttons -->
                 <div class="flex justify-end gap-3 mt-8">
 
-                    <button type="button"
+                    <button type="reset"
                             class="px-5 py-2.5 text-sm font-medium
                                    text-gray-900 bg-gray-100
                                    hover:bg-gray-200 rounded-lg">
+
                         Clear
+
                     </button>
 
-                    <button type="button"
+                    <button type="submit"
                             class="px-5 py-2.5 text-sm font-medium
                                    text-white bg-blue-600
                                    hover:bg-blue-700 rounded-lg">
+
                         Save Preferences
+
                     </button>
 
                 </div>
@@ -213,7 +287,7 @@
         <!-- Complete Profile -->
         <div class="flex justify-end mt-6">
 
-            <a href="/home/"
+            <a th:href="@{/home/}"
                class="px-6 py-2.5 text-sm font-medium text-white
                       bg-green-600 hover:bg-green-700 rounded-lg">
 
@@ -228,4 +302,5 @@
 </main>
 
 </body>
+
 </html>

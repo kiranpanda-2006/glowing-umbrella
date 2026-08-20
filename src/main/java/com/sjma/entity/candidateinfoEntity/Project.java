@@ -26,6 +26,6 @@ public class Project {
 	
 	private String githubUrl;
 	
-	private String liveProjectUrl;
+	private String liveUrl;
 
 }

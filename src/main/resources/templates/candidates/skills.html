@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -16,6 +17,7 @@
 
         <!-- Header -->
         <div class="mb-8">
+
             <h1 class="text-3xl font-bold text-gray-900">
                 Skills
             </h1>
@@ -23,6 +25,7 @@
             <p class="mt-2 text-gray-500">
                 Add your technical and professional skills.
             </p>
+
         </div>
 
 
@@ -33,7 +36,12 @@
                 Add Your Skills
             </h2>
 
-            <form id="skillsForm">
+
+            <form id="skillsForm"
+                  th:action="@{/create/skills}"
+                  th:object="${skills}"
+                  method="post">
+
 
                 <!-- Technical Skills -->
                 <div class="mb-6">
@@ -43,14 +51,18 @@
                     </label>
 
                     <input type="text"
-                           id="technicalSkill"
-                           name="technicalSkill"
+                           th:field="*{technicalSkill}"
                            placeholder="e.g. Java, Spring Boot, MySQL"
                            class="w-full p-2.5 border border-gray-300 rounded-lg
                                   focus:ring-blue-500 focus:border-blue-500">
 
                     <p class="mt-1 text-sm text-gray-500">
                         Add skills one by one.
+                    </p>
+
+                    <p th:if="${#fields.hasErrors('technicalSkill')}"
+                       th:errors="*{technicalSkill}"
+                       class="mt-1 text-sm text-red-600">
                     </p>
 
                 </div>
@@ -64,11 +76,15 @@
                     </label>
 
                     <input type="text"
-                           id="programmingLanguage"
-                           name="programmingLanguage"
+                           th:field="*{programingLanguage}"
                            placeholder="e.g. Java, JavaScript, Python"
                            class="w-full p-2.5 border border-gray-300 rounded-lg
                                   focus:ring-blue-500 focus:border-blue-500">
+
+                    <p th:if="${#fields.hasErrors('programingLanguage')}"
+                       th:errors="*{programingLanguage}"
+                       class="mt-1 text-sm text-red-600">
+                    </p>
 
                 </div>
 
@@ -81,11 +97,15 @@
                     </label>
 
                     <input type="text"
-                           id="framework"
-                           name="framework"
+                           th:field="*{frameworks}"
                            placeholder="e.g. Spring Boot, React, Angular"
                            class="w-full p-2.5 border border-gray-300 rounded-lg
                                   focus:ring-blue-500 focus:border-blue-500">
+
+                    <p th:if="${#fields.hasErrors('frameworks')}"
+                       th:errors="*{frameworks}"
+                       class="mt-1 text-sm text-red-600">
+                    </p>
 
                 </div>
 
@@ -98,11 +118,15 @@
                     </label>
 
                     <input type="text"
-                           id="database"
-                           name="database"
+                           th:field="*{database}"
                            placeholder="e.g. MySQL, PostgreSQL, MongoDB"
                            class="w-full p-2.5 border border-gray-300 rounded-lg
                                   focus:ring-blue-500 focus:border-blue-500">
+
+                    <p th:if="${#fields.hasErrors('database')}"
+                       th:errors="*{database}"
+                       class="mt-1 text-sm text-red-600">
+                    </p>
 
                 </div>
 
@@ -115,11 +139,15 @@
                     </label>
 
                     <input type="text"
-                           id="tools"
-                           name="tools"
+                           th:field="*{tools}"
                            placeholder="e.g. Git, Docker, Maven"
                            class="w-full p-2.5 border border-gray-300 rounded-lg
                                   focus:ring-blue-500 focus:border-blue-500">
+
+                    <p th:if="${#fields.hasErrors('tools')}"
+                       th:errors="*{tools}"
+                       class="mt-1 text-sm text-red-600">
+                    </p>
 
                 </div>
 
@@ -131,12 +159,16 @@
                         Other Skills
                     </label>
 
-                    <textarea id="otherSkills"
-                              name="otherSkills"
+                    <textarea th:field="*{otherSkills}"
                               rows="3"
                               placeholder="Add any other skills..."
                               class="w-full p-2.5 border border-gray-300 rounded-lg
                                      focus:ring-blue-500 focus:border-blue-500"></textarea>
+
+                    <p th:if="${#fields.hasErrors('otherSkills')}"
+                       th:errors="*{otherSkills}"
+                       class="mt-1 text-sm text-red-600">
+                    </p>
 
                 </div>
 
@@ -149,7 +181,9 @@
                             class="px-5 py-2.5 text-sm font-medium
                                    text-gray-900 bg-gray-100
                                    hover:bg-gray-200 rounded-lg">
+
                         Clear
+
                     </button>
 
                     <button type="button"
@@ -157,7 +191,9 @@
                             class="px-5 py-2.5 text-sm font-medium
                                    text-white bg-blue-600
                                    hover:bg-blue-700 rounded-lg">
+
                         Save Skills
+
                     </button>
 
                 </div>
@@ -188,10 +224,11 @@
             <div id="skillsContainer"
                  class="flex flex-wrap gap-2">
 
-                <!-- Empty State -->
                 <p id="emptySkills"
                    class="text-sm text-gray-500">
+
                     No skills added yet.
+
                 </p>
 
             </div>
@@ -202,13 +239,14 @@
         <!-- Continue -->
         <div class="flex justify-end mt-6">
 
-            <a th:href="@{/create/experience}"
-               class="px-6 py-2.5 text-sm font-medium text-white
-                      bg-blue-600 hover:bg-blue-700 rounded-lg">
+            <button type="submit"
+                    form="skillsForm"
+                    class="px-6 py-2.5 text-sm font-medium text-white
+                           bg-blue-600 hover:bg-blue-700 rounded-lg">
 
                 Save & Continue
 
-            </a>
+            </button>
 
         </div>
 
@@ -221,4 +259,5 @@
 <script th:src="@{/js/skills.js}"></script>
 
 </body>
+
 </html>

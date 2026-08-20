@@ -18,6 +18,8 @@ import com.sjma.dto.candidatesDto.certificationsDto;
 import com.sjma.dto.candidatesDto.skillsDto;
 import com.sjma.service.CandidateProfileService;
 
+import jakarta.validation.Valid;
+
 @Controller
 @RequestMapping("/create")
 public class ProfileController {
@@ -77,30 +79,34 @@ public class ProfileController {
     }
     
     @PostMapping("/profile")
-    public String createProfile(
+    public String createProfile(@Valid
             @ModelAttribute("profile") CandidatesProfileDto profile,
-            BindingResult bindingResult) {
+            BindingResult bindingResult,
+            Model model) {
 
         if (bindingResult.hasErrors()) {
+        	model.addAttribute("error", bindingResult.getAllErrors());
             return "candidates/profile";
         }
 
-        service.save(profile);
+//        service.save(profile);
 
         return "redirect:/create/education";
     }
 
 
     @PostMapping("/education")
-    public String createEducation(
+    public String createEducation(@Valid
             @ModelAttribute("education") EducationDto education,
-            BindingResult bindingResult) {
+            BindingResult bindingResult,
+            Model model) {
 
         if (bindingResult.hasErrors()) {
+        	model.addAttribute("error", bindingResult.getAllErrors());
             return "candidates/education";
         }
 
-        service.save(education);
+//        service.save(education);
 
         return "redirect:/create/skills";
     }
@@ -115,7 +121,7 @@ public class ProfileController {
             return "candidates/skills";
         }
 
-        service.save(skills);
+//        service.save(skills);
 
         return "redirect:/create/experience";
     }
@@ -130,7 +136,7 @@ public class ProfileController {
             return "candidates/experience";
         }
         
-        service.save(experience);
+//        service.save(experience);
 
         return "redirect:/create/projects";
     }
@@ -139,13 +145,15 @@ public class ProfileController {
     @PostMapping("/projects")
     public String createProject(
             @ModelAttribute("project") ProjectsDto project,
-            BindingResult bindingResult) {
+            BindingResult bindingResult,
+            Model model) {
 
         if (bindingResult.hasErrors()) {
+        	model.addAttribute("error",bindingResult.getAllErrors());
             return "candidates/projects";
         }
 
-        service.save(project);
+//        service.save(project);
 
         return "redirect:/create/certifications";
     }
@@ -160,7 +168,7 @@ public class ProfileController {
             return "candidates/certification";
         }
 
-        service.save(certifications);
+//        service.save(certifications);
 
         return "redirect:/create/resume";
     }
@@ -175,7 +183,7 @@ public class ProfileController {
             return "candidates/resume";
         }
 
-        service.save(resume);
+//        service.save(resume);
 
         return "redirect:/create/job-preferences";
     }
@@ -190,8 +198,8 @@ public class ProfileController {
             return "candidates/job-preferences";
         }
 
-        service.save(preference);
+//        service.save(preference);
 
-        return "redirect:/profile";
+        return "candidates/job-preferences";
     }
 }
