@@ -42,135 +42,101 @@
             </p>
 
 
-            <form id="resumeForm"
-                  th:action="@{/create/resume}"
-                  method="post"
-                  enctype="multipart/form-data">
+			<form id="resumeForm"
+			      th:action="@{/create/resume}"
+			      method="post"
+			      enctype="multipart/form-data">
 
-                <!-- Upload Area -->
-                <label for="resumeFile"
-                       class="flex flex-col items-center justify-center
-                              w-full h-64 border-2 border-gray-300
-                              border-dashed rounded-lg cursor-pointer
-                              bg-gray-50 hover:bg-gray-100">
+			    <label for="resumeFile"
+			           class="flex flex-col items-center justify-center
+			                  w-full h-64 border-2 border-gray-300
+			                  border-dashed rounded-lg cursor-pointer
+			                  bg-gray-50 hover:bg-gray-100">
 
-                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+			        <div class="flex flex-col items-center justify-center pt-5 pb-6">
 
-                        <svg class="w-10 h-10 mb-4 text-gray-500"
-                             fill="none"
-                             stroke="currentColor"
-                             viewBox="0 0 24 24">
+			            <svg class="w-10 h-10 mb-4 text-gray-500"
+			                 fill="none"
+			                 stroke="currentColor"
+			                 viewBox="0 0 24 24">
 
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M7 16a4 4 0 01-.88-7.903A5.002 5.002 0 0116.9 6H17a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v9"/>
+			                <path stroke-linecap="round"
+			                      stroke-linejoin="round"
+			                      stroke-width="2"
+			                      d="M7 16a4 4 0 01-.88-7.903
+			                         A5.002 5.002 0 0116.9 6H17
+			                         a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v9"/>
+			            </svg>
 
-                        </svg>
+			            <p class="mb-2 text-sm text-gray-500">
+			                <span class="font-semibold">
+			                    Click to upload
+			                </span>
+			                or drag and drop
+			            </p>
 
-                        <p class="mb-2 text-sm text-gray-500">
+			            <p class="text-xs text-gray-500">
+			                PDF only
+			            </p>
 
-                            <span class="font-semibold">
-                                Click to upload
-                            </span>
+			        </div>
 
-                            or drag and drop
+			        <!-- File is temporarily received as MultipartFile -->
+			        <input id="resumeFile"
+			               name="resumeFile"
+			               type="file"
+			               accept=".pdf,application/pdf"
+			               class="hidden">
+			    </label>
 
-                        </p>
+			    <div id="selectedFile"
+			         class="hidden mt-6 p-4 border border-gray-200
+			                rounded-lg flex items-center justify-between">
 
-                        <p class="text-xs text-gray-500">
-                            PDF only
-                        </p>
+			        <div class="flex items-center gap-3">
 
-                    </div>
+			            <div>
+			                <p id="fileName"
+			                   class="font-medium text-gray-900">
+			                    No resume selected
+			                </p>
 
-                    <!-- IMPORTANT:
-                         This is MultipartFile, NOT ResumeDto.resume -->
-                    <input id="resumeFile"
-                           name="resumeFile"
-                           type="file"
-                           accept=".pdf,application/pdf"
-                           class="hidden">
+			                <p id="fileSize"
+			                   class="text-sm text-gray-500">
+			                    Upload your resume
+			                </p>
+			            </div>
 
-                </label>
+			        </div>
 
+			        <button type="button"
+			                id="removeFile"
+			                class="text-sm text-red-600 hover:underline">
+			            Remove
+			        </button>
 
-                <!-- Selected File -->
-                <div id="selectedFile"
-                     class="hidden mt-6 p-4 border border-gray-200
-                            rounded-lg flex items-center justify-between">
+			    </div>
 
-                    <div class="flex items-center gap-3">
+			    <div class="flex justify-end gap-3 mt-8">
 
-                        <svg class="w-8 h-8 text-red-500"
-                             fill="none"
-                             stroke="currentColor"
-                             viewBox="0 0 24 24">
+			        <button type="button"
+			                id="clearResume"
+			                class="px-5 py-2.5 text-sm font-medium
+			                       text-gray-900 bg-gray-100
+			                       hover:bg-gray-200 rounded-lg">
+			            Clear
+			        </button>
 
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="1.5"
-                                  d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+			        <button type="submit"
+			                class="px-5 py-2.5 text-sm font-medium
+			                       text-white bg-blue-600
+			                       hover:bg-blue-700 rounded-lg">
+			            Save Resume
+			        </button>
 
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="1.5"
-                                  d="M14 2v6h6"/>
+			    </div>
 
-                        </svg>
-
-                        <div>
-
-                            <p id="fileName"
-                               class="font-medium text-gray-900">
-                                No resume selected
-                            </p>
-
-                            <p id="fileSize"
-                               class="text-sm text-gray-500">
-                                Upload your resume
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                    <button type="button"
-                            id="removeFile"
-                            class="text-sm text-red-600 hover:underline">
-
-                        Remove
-
-                    </button>
-
-                </div>
-
-
-                <!-- Buttons -->
-                <div class="flex justify-end gap-3 mt-8">
-
-                    <button type="button"
-                            id="clearResume"
-                            class="px-5 py-2.5 text-sm font-medium
-                                   text-gray-900 bg-gray-100
-                                   hover:bg-gray-200 rounded-lg">
-
-                        Clear
-
-                    </button>
-
-                    <button type="submit"
-                            class="px-5 py-2.5 text-sm font-medium
-                                   text-white bg-blue-600
-                                   hover:bg-blue-700 rounded-lg">
-
-                        Save Resume
-
-                    </button>
-
-                </div>
-
-            </form>
+			</form>
 
         </div>
 

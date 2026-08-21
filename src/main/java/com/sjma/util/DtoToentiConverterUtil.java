@@ -87,8 +87,8 @@ public class DtoToentiConverterUtil {
         JobPreference jobPreferences = new JobPreference();
 
         jobPreferences.setRole(dto.getRole());
-        jobPreferences.setPreferedLocation(dto.getPreferredLocation());
-        jobPreferences.setEmployeeType(dto.getEmploymentType());
+        jobPreferences.setPreferredLocation(dto.getPreferredLocation());
+        jobPreferences.setEmploymentType(dto.getEmploymentType());
         jobPreferences.setExperienceLevel(dto.getExperienceLevel());
         jobPreferences.setExpectedSalary(dto.getExpectedSalary());
         jobPreferences.setWorkMode(dto.getWorkMode());
@@ -125,7 +125,7 @@ public class DtoToentiConverterUtil {
         skills.setTechnicalSkill(dto.getTechnicalSkill());
         skills.setProgramingLanguage(dto.getProgramingLanguage());
         skills.setFrameworks(dto.getFrameworks());
-        skills.setDbKnowledge(dto.getDatabase());
+        skills.setDbknowledge(dto.getDatabase());
         skills.setTools(dto.getTools());
 
         return skills;
